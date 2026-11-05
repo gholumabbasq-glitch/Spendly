@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>اسپندلی | مدیریت هزینه‌ها</title>
+
+    <link rel="stylesheet" href="page.css" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/@majidh1/jalalidatepicker/dist/jalalidatepicker.min.css"
+    />
+    <script
+      src="https://unpkg.com/@majidh1/jalalidatepicker/dist/jalalidatepicker.min.js"
+      defer
+    ></script>
+    <script src="APP.js" defer></script>
+  </head>
+
+  <body>
+    <div class="app">
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <a href="#" class="brand">
+          <span class="brand-icon">S</span>
+          <span>اسپندلی</span>
+        </a>
+
+        <p class="nav-label">منو</p>
+
+        <nav>
+          <a href="#dashboard" class="nav-link active">
+            <span>▦</span> داشبورد
+          </a>
+
+          <a href="#transactions" class="nav-link">
+            <span>↔</span> تراکنش‌ها
+          </a>
+        </nav>
+
+        <div class="sidebar-bottom">
+          <div class="profile-avatar">S</div>
+          <div>
+            <strong>کیف پول من</strong>
+            <p>حساب شخصی</p>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="main-content" id="dashboard">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">مدیریت امور مالی شخصی</p>
+            <h1>داشبورد</h1>
+            <p class="subtitle">هزینه‌های خود را هوشمندانه مدیریت کنید.</p>
+          </div>
+
+          <span class="date-badge">مدیریت هزینه‌ها</span>
+        </header>
+
+        <!-- Summary Cards -->
+        <section class="summary-grid">
+          <article class="summary-card featured">
+            <div class="card-top">
+              <span>مجموع هزینه‌ها</span>
+              <span class="card-icon">T</span>
+            </div>
+            <h2 id="total-expenses">0 تومان</h2>
+            <p>مجموع تمام هزینه‌های ثبت‌ شده</p>
+          </article>
+
+          <article class="summary-card">
+            <div class="card-top">
+              <span>هزینه‌های این ماه</span>
+              <span class="card-icon">◷</span>
+            </div>
+            <h2 id="monthly-expenses">0 تومان</h2>
+            <p>مجموع هزینه‌های ماه جاری</p>
+          </article>
+
+          <article class="summary-card">
+            <div class="card-top">
+              <span>تعداد تراکنش‌ها</span>
+              <span class="card-icon">▤</span>
+            </div>
+            <h2 id="transaction-count">0</h2>
+            <p>تعداد کل تراکنش های ثبت‌ شده</p>
+          </article>
+        </section>
+
+        <!-- Add Expense -->
+        <section class="panel" id="add-expense">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">ثبت اطلاعات جدید</p>
+              <h2>افزودن هزینه</h2>
+            </div>
+            <span class="heading-icon">＋</span>
+          </div>
+
+          <form id="expense-form">
+            <div class="form-grid">
+              <div class="field">
+                <label for="expense-name">عنوان هزینه</label>
+                <input
+                  type="text"
+                  id="expense-name"
+                  placeholder="مثلاً خرید مواد غذایی"
+                  maxlength="100"
+                />
+              </div>
+
+              <div class="field">
+                <label for="expense-amount">مبلغ (تومان)</label>
+                <input
+                  type="number"
+                  id="expense-amount"
+                  placeholder="0.00"
+                  min="0.01"
+                  step="0.01"
+                />
+              </div>
+
+              <div class="field">
+                <label for="expense-category">دسته‌بندی</label>
+                <select id="expense-category">
+                  <option selected disabled>انتخاب دسته‌بندی</option>
+                  <option>غذا و خوراک</option>
+                  <option>حمل‌ونقل</option>
+                  <option>آموزش</option>
+                  <option>خرید</option>
+                  <option>سلامت</option>
+                  <option>سایر</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label for="expense-date">تاریخ</label>
+                <input
+                  type="text"
+                  id="expense-date"
+                  placeholder="تاریخ را انتخاب کنید"
+                  data-jdp
+                  autocomplete="off"
+                />
+              </div>
+            </div>
+
+            <div class="form-footer">
+              <p>اطلاعات هزینه خود را وارد کنید.</p>
+
+              <button id="btn" type="submit" class="primary-btn">
+                <span>＋</span> ثبت هزینه
+              </button>
+            </div>
+          </form>
+        </section>
+
+        <!-- Transactions -->
+        <section class="panel" id="transactions">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">فعالیت‌های مالی شما</p>
+              <h2>تراکنش‌های اخیر</h2>
+            </div>
+          </div>
+
+          <div class="filter-box">
+            <div>
+              <label for="category-filter" class="lable"
+                >فیلتر دسته‌بندی:
+              </label>
+
+              <select id="category-filter">
+                <option>همه هزینه‌ها</option>
+                <option>غذا و خوراک</option>
+                <option>حمل‌ونقل</option>
+                <option>آموزش</option>
+                <option>خرید</option>
+                <option>سلامت</option>
+                <option>سایر</option>
+              </select>
+            </div>
+
+            <div class="search-box">
+              <input
+                type="text"
+                id="expense-search"
+                placeholder="جست‌وجوی نام هزینه..."
+              />
+            </div>
+          </div>
+
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th>عنوان هزینه</th>
+                  <th>دسته‌بندی</th>
+                  <th>تاریخ</th>
+                  <th>مبلغ</th>
+                  <th>عملیات</th>
+                </tr>
+              </thead>
+
+              <tbody id="expense-list">
+                <!-- JavaScript will add rows here -->
+              </tbody>
+            </table>
+          </div>
+          <p class="empty-state" id="empty-state">
+            هنوز هزینه‌ای ثبت نشده است. اولین هزینه خود را ثبت کنید.
+          </p>
+        </section>
+
+        <footer class="footer">
+          <p>اسپندلی · سامانه مدیریت هزینه‌های شخصی</p>
+          <p>پروژه تمرینی</p>
+        </footer>
+      </main>
+    </div>
+  </body>
+</html>
