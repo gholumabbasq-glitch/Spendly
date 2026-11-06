@@ -457,9 +457,8 @@ tbody tr:last-child td {
 /* ---------- Footer ---------- */
 .footer {
   display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 10px;
+  justify-content: center;
+
   padding: 10px 2px 25px;
   color: var(--muted);
   font-size: 11px;
