@@ -202,6 +202,8 @@ button {
   border: none;
 }
 
+
+
 .card-top {
   display: flex;
   justify-content: space-between;
@@ -209,7 +211,7 @@ button {
   gap: 10px;
   font-size: 13px;
   font-weight: 600;
-  color: var(--muted);
+   color: white;
 }
 
 .featured .card-top,
@@ -238,11 +240,19 @@ button {
   letter-spacing: -0.8px;
   margin: 17px 0 5px;
   overflow-wrap: anywhere;
+   color: white;
 }
 
 .summary-card p {
   font-size: 12px;
-  color: var(--muted);
+   color: white;
+}
+.monthly-card {
+  background-color: #0555e0;
+}
+
+.transaction-card {
+  background-color: #057aac;
 }
 
 /* ---------- Panels ---------- */
@@ -488,13 +498,30 @@ tbody tr:last-child td {
 .delete-btn:hover {
   background-color: #fecaca;
 }
-.filter-box {
-  margin-bottom: 15px;
-  font-family: sans-serif;
-  font-size: 15px;
+.filter-box > div:first-child {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  gap: 8px;
+  flex: 0 0 auto;
+}
+
+.filter-box .search-box {
+  flex: 1;
+  min-width: 0;
+}
+
+.filter-box select,
+.filter-box input {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.filter-box input {
+  min-width: 0;
+}
+
+.label {
+  font-weight: 900px;
 }
 
 .label {
@@ -613,5 +640,42 @@ tbody tr:last-child td {
 
   .primary-btn {
     width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .filter-box {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .filter-box > div:first-child {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+    width: 100%;
+  }
+
+  .filter-box > div:first-child label {
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .filter-box select {
+    width: 100%;
+    min-height: 44px;
+    box-sizing: border-box;
+  }
+
+  .filter-box .search-box {
+    width: 100%;
+  }
+
+  .filter-box input {
+    width: 100%;
+    box-sizing: border-box;
   }
 }
